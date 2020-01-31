@@ -1,10 +1,8 @@
-%% Uses the output of impulse_response.m and plots it.
+% This tests whether the impulse_response.m function works
 
-% Written by Hunter Whaples on 1/30/2019
-
-X  = 1:1:1000;
-Y  = 2*X.^2;
-fs = 1/100;
-
-[h ,t] = impulse_response(X,Y,fs);
-plot(t, h);
+fs=10;
+t=-1:1/fs:1;
+x=cos(2*pi*t);    % input signal
+y=3*cos(2*pi*t);  % output signal
+[h,t]=impulse_response(x,y,fs);   % we expect the impulse response to be
+amplitude=(1/fs)*trapz(h)         % a dirac delta with amplitude 3
